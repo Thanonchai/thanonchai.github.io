@@ -1,2 +1,2 @@
 User-Agent: *
-Sitemap: nont.dev/sitemap.xml
+Sitemap: https://nont.dev/sitemap.xml
