@@ -1,2 +1,2 @@
 User-Agent: *
-Sitemap: thanonchai.github.io/sitemap.xml
+Sitemap: nont.dev/sitemap.xml
