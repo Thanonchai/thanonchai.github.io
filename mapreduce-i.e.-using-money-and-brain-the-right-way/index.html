@@ -1,0 +1,491 @@
+<!DOCTYPE html>
+<html lang="en-US">
+
+<head>
+  <meta http-equiv="X-Clacks-Overhead" content="GNU Terry Pratchett" />
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<link rel="shortcut icon" href="https://nont.dev/images/favicon.png" />
+<title>MapReduce, i.e. using money and brain the right way | Nont ヽ(ಠ_ಠ)ノ</title>
+<meta name="title" content="MapReduce, i.e. using money and brain the right way" />
+<meta name="description" content="Have you been to a meeting where your key stakeholders, decision makers, or even your managers look at you like this?
+As a technical person, I have been to many of these, more than I had ever wanted to or wished for. It&rsquo;s pretty much the reaction that me and my team would get when we try to push a new idea forward or even try something new. Adding that as a person coming from a third world country and being Asian, not getting a good scolding is already considered lucky (I did personally get those more than a fair share of it)." />
+<meta name="keywords" content="paper,distributed_systems,big_brain," />
+
+
+<meta property="og:title" content="MapReduce, i.e. using money and brain the right way" />
+<meta property="og:description" content="Have you been to a meeting where your key stakeholders, decision makers, or even your managers look at you like this?
+As a technical person, I have been to many of these, more than I had ever wanted to or wished for. It&rsquo;s pretty much the reaction that me and my team would get when we try to push a new idea forward or even try something new. Adding that as a person coming from a third world country and being Asian, not getting a good scolding is already considered lucky (I did personally get those more than a fair share of it)." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://nont.dev/mapreduce-i.e.-using-money-and-brain-the-right-way/" />
+<meta property="og:image" content="https://nont.dev/images/share.png"/>
+<meta property="article:published_time" content="2021-02-04T22:37:05-06:00" />
+<meta property="article:modified_time" content="2021-02-04T22:37:05-06:00" /><meta property="og:site_name" content="Hugo ʕ•ᴥ•ʔ Bear" />
+
+
+
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="https://nont.dev/images/share.png"/>
+
+<meta name="twitter:title" content="MapReduce, i.e. using money and brain the right way"/>
+<meta name="twitter:description" content="Have you been to a meeting where your key stakeholders, decision makers, or even your managers look at you like this?
+As a technical person, I have been to many of these, more than I had ever wanted to or wished for. It&rsquo;s pretty much the reaction that me and my team would get when we try to push a new idea forward or even try something new. Adding that as a person coming from a third world country and being Asian, not getting a good scolding is already considered lucky (I did personally get those more than a fair share of it)."/>
+
+
+
+<meta itemprop="name" content="MapReduce, i.e. using money and brain the right way">
+<meta itemprop="description" content="Have you been to a meeting where your key stakeholders, decision makers, or even your managers look at you like this?
+As a technical person, I have been to many of these, more than I had ever wanted to or wished for. It&rsquo;s pretty much the reaction that me and my team would get when we try to push a new idea forward or even try something new. Adding that as a person coming from a third world country and being Asian, not getting a good scolding is already considered lucky (I did personally get those more than a fair share of it).">
+<meta itemprop="datePublished" content="2021-02-04T22:37:05-06:00" />
+<meta itemprop="dateModified" content="2021-02-04T22:37:05-06:00" />
+<meta itemprop="wordCount" content="2705">
+<meta itemprop="image" content="https://nont.dev/images/share.png"/>
+
+
+
+<meta itemprop="keywords" content="paper,distributed_systems,big_brain," />
+
+<meta name="referrer" content="no-referrer-when-downgrade" />
+
+  <style>
+  body {
+    font-family: Verdana, sans-serif;
+    margin: auto;
+    padding: 20px;
+    max-width: 720px;
+    text-align: left;
+    background-color: #fff;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    line-height: 1.5;
+    color: #444;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6,
+  strong,
+  b {
+    color: #222;
+  }
+
+  a {
+    color: #3273dc;
+     
+  }
+
+  .title {
+    text-decoration: none;
+    border: 0;
+  }
+
+  .title span {
+    font-weight: 400;
+  }
+
+  nav a {
+    margin-right: 10px;
+  }
+
+  textarea {
+    width: 100%;
+    font-size: 16px;
+  }
+
+  input {
+    font-size: 16px;
+  }
+
+  content {
+    line-height: 1.6;
+  }
+
+  table {
+    width: 100%;
+  }
+
+  img {
+    max-width: 100%;
+  }
+
+  code {
+    padding: 2px 5px;
+    background-color: #f2f2f2;
+  }
+
+  pre code {
+    color: #222;
+    display: block;
+    padding: 20px;
+    white-space: pre-wrap;
+    font-size: 14px;
+  }
+
+  blockquote {
+    border-left: 1px solid #999;
+    color: #222;
+    padding-left: 20px;
+    font-style: italic;
+  }
+
+  footer {
+    padding: 25px;
+    text-align: center;
+  }
+
+  .helptext {
+    color: #777;
+    font-size: small;
+  }
+
+  .errorlist {
+    color: #eba613;
+    font-size: small;
+  }
+
+   
+  ul.blog-posts {
+    list-style-type: none;
+    padding: unset;
+  }
+
+  ul.blog-posts li {
+    display: flex;
+  }
+
+  ul.blog-posts li span {
+    flex: 0 0 130px;
+  }
+
+  ul.blog-posts li a:visited {
+    color: #8b6fcb;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    body {
+      background-color: #333;
+      color: #ddd;
+    }
+
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6,
+    strong,
+    b {
+      color: #eee;
+    }
+
+    a {
+      color: #8cc2dd;
+    }
+
+    code {
+      background-color: #777;
+    }
+
+    pre code {
+      color: #ddd;
+    }
+
+    blockquote {
+      color: #ccc;
+    }
+
+    textarea,
+    input {
+      background-color: #252525;
+      color: #ddd;
+    }
+
+    .helptext {
+      color: #aaa;
+    }
+  }
+
+</style>
+
+</head>
+
+<body>
+  <header><a href="/" class="title">
+  <h2>Nont ヽ(ಠ_ಠ)ノ</h2>
+</a>
+<nav><a href="/">Home</a>
+
+
+<a href="/blog">Blog</a>
+
+</nav>
+</header>
+  <main>
+
+<h1>MapReduce, i.e. using money and brain the right way</h1>
+<p>
+  <i>
+    <time datetime='2021-02-04' pubdate>
+      04 Feb, 2021
+    </time>
+  </i>
+</p>
+
+<content>
+  <p>Have you been to a meeting where your key stakeholders, decision makers, or even
+your managers look at you like this?</p>
+<p><img src="/images/lookdown.jpg" alt="Lookdown"></p>
+<p>As a technical person, I have been to many of these, more than I had ever wanted
+to or wished for. It&rsquo;s pretty much the reaction that me and my team would get
+when we try to push a new idea forward or even try something new.  Adding that
+as a person coming from a third world country and being Asian, not getting a
+good scolding is already considered lucky (I did personally get those more than
+a fair share of it). Instead of saying our lives matter, I guess us Asians
+want to be just the wallflowers and avoiding attention. We just couldn&rsquo;t handle
+scoldings or confrontations very well. Yet we&rsquo;re encouraged to speak up :):):).
+That&rsquo;s always a guaranteed feedback item for you in a yearly performance review.</p>
+<p>Throughout my 16 years of corporate life, I think I have finally figured out,
+at least maybe partially, the patterns that these people have in common:</p>
+<ol>
+<li>They highly value brain power and time.</li>
+<li>They are cursed by having too much money.</li>
+<li>By default, they think you are stupid.</li>
+<li>By default, they think vendors are geniuses.</li>
+<li>They love to exercise power.</li>
+<li>To them, efficiency includes laziness.</li>
+<li>&ldquo;Not my problem.&rdquo; is how they meet their OKRs.</li>
+</ol>
+<p>Maybe I&rsquo;ll add more to the list once I&rsquo;ve figured out more. But at this point,
+you may wonder while the rest are like a rant, point #1 seems like &hellip; a good
+thing. But some of you grown-ups would know there&rsquo;s a twist to that:</p>
+<blockquote>
+<p>&ldquo;<em>Most of the evil in this world is done by people with good intentions.</em>&rdquo; &ndash;
+<strong>T.S. Eliot</strong></p>
+</blockquote>
+<p>It&rsquo;s their time they value and their brain power to attend some meetings to make
+some &ldquo;decisions&rdquo;. It doesn&rsquo;t have anything to do with your time or your brain
+power.  If they can buy time while not wasting their brain power to gain more
+efficiency (see above for def) they will do so. Even better if it&rsquo;s not their
+money. You&rsquo;re mistaken, it&rsquo;s never about you because there&rsquo;s no such thing as a
+people person.  That&rsquo;s like a tooth fairy, it sounds nice and calming, but it&rsquo;s
+not real. It&rsquo;s something you realize when you grow up.</p>
+<h1 id="buy-vs-outsource-but-dont-you-dare-even-think-about-build">Buy vs Outsource but DON&rsquo;T YOU DARE even think about Build</h1>
+<p>Recently an incident occurred, someone just rushed to a consulting company to
+conduct a cold-eye review. It&rsquo;s kinda hilarious, yet surreal and bizarre to see
+this very act in action &ndash; your higher-ups hired someone to interview you rather
+than wanting to hear from you directly. You just got no chance to say anything
+because all the observations above are just in play, plus it gives them a nice
+bumper to blame the consulting firm when things go sideways (Not my problem,
+eh?). Btw, sorry but your consulting report &hellip; sucks so much that without the
+nice graphics I&rsquo;d have thought it was done by a highschooler. &ldquo;Fallback&rdquo;???
+Urgh GGEZ bunch of noobs.</p>
+<p>That&rsquo;s probably the most recent &ldquo;Buy&rdquo;. Oh we look so smart when we do that,
+checkbox ticked and it&rsquo;s green again.  We would sometimes look even smarter if
+we can outsource some of these activities. Others will do it cheaper and better.
+Just recently, on a group photo of senior architects, a comment was left saying
+&ldquo;so much experience in solution selections!&rdquo;. Wow, didn&rsquo;t know that architects
+are revered for their shopping sprees! Hopefully they know exactly what they&rsquo;re
+trying to get. Unlike a People&rsquo;s person, AAAA grade replicas are real.</p>
+<p>Having too much money pretty much confines their thinking to be just Buy vs
+Outsource. If these Buy activities are so admired, the opposite is also true &ndash;
+it&rsquo;s a taboo and blasphemy to even think about Building. Oh and experiments are
+also an act of Building like how Outsourcing to Buying. If you&rsquo;re lucky, you&rsquo;ll
+get ridiculed.  If you&rsquo;re not, here is what you can yourself into:</p>
+<blockquote>
+<p>&ldquo;So you&rsquo;re saying you&rsquo;re gonna do this.  That&rsquo;s stupid and YOU are stupid. I&rsquo;m
+wasting my time here and can&rsquo;t believe I was fooled into listening to you. Say
+it that your idea is stupid or else I&rsquo;ll leave the room and tell the whole
+world.&rdquo; &ndash; <strong>You know it&rsquo;s you if you&rsquo;re reading this. It was the room 3C.466
+:)</strong></p>
+</blockquote>
+<p>Apart from his saliva sprayed onto my face and stinking acidic coffee breathes,
+which could have been a major COVID risk factor now, the hatred was so real
+almost eating you alive.  To give more context, the person was comparing what my
+team were doing vs a product from a giant ERP vendor. It&rsquo;s also an irony that
+the person was (and I believe still is) suffering from severe reliability issues
+while we wanted to offload some of that workload to cloud. I understand it well,
+not buying IS stupid. The yelling was justified.</p>
+<p><img src="/images/yourstupid.jpg" alt="Don&rsquo;t you see I&rsquo;m suffering!"></p>
+<p>I&rsquo;d contend that without a little bit of prototyping or building here and there,
+you won&rsquo;t actually know much about what you&rsquo;re trying to do. Being vague is
+never going to turn out well, except with pure hope and luck. Thinking that your
+vendor will solve all the problems for you is like outsourcing your brain
+while having to continue to be compensated in the same full amount. It&rsquo;s a good
+business, isn&rsquo;t it?</p>
+<p>Yeah, I can see why I&rsquo;m stupid. Oh and yes to get out of that situation, I was
+stupid enough to say &ldquo;Ok, I&rsquo;m the one who&rsquo;s stupid.&rdquo;. No matter how much that
+guy wanted to discuss anything afterwards, I just avoided it completely. What do
+you expect from an Asian guy, speaking up?</p>
+<h1 id="entering-mapreduce">Entering MapReduce</h1>
+<p>Sorry for the long intro, but IMHO it&rsquo;s really unhealthy, toxic or even
+dangerous when every move and act is confined to Buy vs Build where the latter
+is always a no-no. If we take a step back, we&rsquo;ll know that we miss the forest
+for the trees. In the grand scheme of things, whether Buy vs Build vs Outsource
+is a premature conclusion of how to solve a problem. It&rsquo;s still perplexing to me
+what people actually meant when they fill in their performance review form with
+&ldquo;Problem Solving&rdquo;. The more accurate version of it should be &ldquo;I buy to bury the
+problem.&rdquo;.  These people are ranked at the top, while people fighting the
+buried zombies with headshot kills are in the middle, if not bottom.</p>
+<p>So, let&rsquo;s say, if a problem arises where you have a lot of data, perhaps too
+much, to process, what would you or your org do?  I&rsquo;d bet with my little whole
+month worth of salary that here will come from mine:</p>
+<p><img src="/images/brainlet.jpg" alt="Not a tech company!"></p>
+<p>And then we will lose brain in the process. The funniest quote of the century
+I&rsquo;ve seen so far was given by this senior technical fellow when asked about her
+view around DevOps:</p>
+<blockquote>
+<p>&ldquo;We don&rsquo;t know it yet because :-P (The ERP vendor) hasn&rsquo;t told us about it.&rdquo;</p>
+</blockquote>
+<p>And there goes another millions and a good chunk of time spent hopefully the
+pains and itches will go away. Eventually, something would come out, but rarely
+they were worth the investment. Does it really mean that if we&rsquo;re not a tech
+company, we can&rsquo;t do it like them or use our brain like them&hellip; I don&rsquo;t think
+so.</p>
+<p>Let&rsquo;s see how big brain people solved it. <a href="https://dl.acm.org/doi/10.1145/1327452.1327492">MapReduce</a>
+is a paper published to ACM more than a decade ago. It&rsquo;s the way Google tackled
+this exact same problem &ndash; too much data to process. Yes, they needed it because
+they were indexing the whole internet to give you as much accurate search
+results as possible (and now they&rsquo;re indexing your lives too, just a PSA).</p>
+<p>&ldquo;Oi! A paper? You&rsquo;re being academic again! I&rsquo;m outta here.&rdquo;. I know, I know,
+here is the suggestion I&rsquo;d give &ndash; maybe you should do yourself a favor and
+attach C4 bombs to all your Hadoop and Spark clusters before handing me the
+remote control.  I promise I&rsquo;ll gently hit the button like how I touch a baby&rsquo;s
+buttcheeks with a pinch of talcum. For these people, there&rsquo;s a saying probably
+in Japanese that they should smash their head into tofu until they die. It&rsquo;ll
+take a while, but they&rsquo;ll get to the <a href="https://en.wikipedia.org/wiki/Sanzu_River">Sanzu
+River</a> eventually.</p>
+<p>In case you don&rsquo;t know, MapReduce is the way your lovely Hadoop datalakes
+process your data. In case you don&rsquo;t want to know and have read this far, grab
+your tofu.</p>
+<p>MapReduce is the quintessential of problem solving using both brains and money.
+While reading it, you can&rsquo;t help but be impressed how they elegantly tackled the
+problem. And this was in 2004 when computing resources were so scarce. Perhaps
+some of your phones these days are more powerful than some of their servers back
+then. However, they were able to process 1TB of data within easily within 1000
+seconds, something many are still struggling with today.</p>
+<p>The secret sauce? Simple, using brains to create value from something cheap.
+It&rsquo;s almost always the theme of these papers. For MapReduce, it&rsquo;s creating a
+fleet of cheap, commodity machines that would coordinate with each other to
+process a gigantic amount of data (i.e. all the web pages) if the task can be
+sequenced into the map and reduce steps. If anything fails, some random machine
+will pick it up. No manual monitoring, no human intervention, no nonsense that
+will require you to squeeze more efficiency out by outsourcing it to some other
+countries later. Yes, Google got money, but they will spend to buy more of their
+cheap servers. They even got to the point that they bought grade B memory (need
+to find the source, but I could remember it was an ACM talk) and started
+in-memory computing before anyone. They rather buy to acquire more power than
+just to solve a problem. And that&rsquo;s been making them stay above others, by using
+brains and money the right way, and not really about being a tech company.</p>
+<p><img src="/images/weee.jpg" alt="Weeeeeeee"></p>
+<p>Those who have done functional programming would be very well familiar with the
+MapReduce model. I suspect that the popularity of MapReduce may be the reason
+why most languages now support functional paradigm. For those who are not, a Map
+step does what its name suggests - mapping from something to another. That
+something is usually a key value pair (e.g. a website url as the key and its
+content as the value). A map step can be used for filtering as well. And you can
+have a sequence of multiple map steps, like multiple Mario pipes attached to
+each other. A reduce step does the final calculation from the input (e.g. group
+and count the occurrence of a word).</p>
+<p>The beauty of this model is that both Map and Reduce steps can be distributed to
+many workers. They can be repeated as many times as you want as long as you keep
+them deterministic. Remember that deterministic function you learned in
+highschool? They are the same thing - the output of a function is determined
+solely by the input. For those of you from the House of API Haute Couture, it&rsquo;s
+kinda <a href="https://stackoverflow.com/questions/40296211/what-is-the-difference-between-an-idempotent-and-a-deterministic-function">like but not the really same as your
+idempotency</a>
+The premise is that if you call them with the same inputs, they will produce the
+same results, and it would better if it doesn&rsquo;t contain side-effects.</p>
+<p>So what can you do with this? Because their results will be same, you can
+basically run them anywhere, and you can run as many of them as you want as long
+as you have a machine for them. And because of that, you can buy a lot of cheap
+machines and distribute the work to those machines. And if any of them fails,
+any of the rest can pick up easily, you just need to coordinate them. And no,
+you don&rsquo;t need human to constantly monitor and coordinate (*cough *cough like a
+&hellip;. Bat&amp;&amp; team) to later outsource them to gain efficiency, Google just
+automated them.  They built something to distribute, manage and coordinate the
+work, and reassign tasks in case of failures. That something piece is called the
+Master.</p>
+<p>Here is a photo hunt game for you. Can you find the differences between these
+two photos?
+<img src="/images/mapreduce.png" alt="MapReduce"></p>
+<p><img src="/images/bigbrain.jpg" alt="Big Brain"></p>
+<p><strong>Game over.  You can&rsquo;t!  They are identical.</strong></p>
+<h1 id="mapreduce-seems-cool-so-what">MapReduce seems cool.. So what?</h1>
+<p>The paper already summarizes pretty much all the benefits, but here I will
+highlight the points I particularly like.</p>
+<p>First, there are certain differences between a pet project and a systematic
+approach in trying to solve a problem.  The former attempts to achieve the state
+of being cool, while the latter lays out details as much as possible about the
+problem being solved. Throughout the MapReduce paper, you can clearly see the
+details about limitations and constrained resources they were equipped with.
+That just makes me think of what Dave Thomas and Andy Hunt mention in their book:</p>
+<blockquote>
+<p>&ldquo;It&rsquo;s not whether you think inside the box or outside the box. The problem lies
+in <em><em>finding</em> the box</em> - identifying real constraints.&rdquo; &ndash; <strong>Dave Thomas and Andy
+Hunt</strong>, The Pragmatic Programmer</p>
+</blockquote>
+<p>Secondly, the proposed programming model is a prime example of great separation
+of concerns in practice. MapReduce programmers can focus on their map and
+reduce functions, keep them simple and ensure they are correct. They don&rsquo;t have
+to worry about how to make them run in parallel or even how to handle failures
+as the framework will handle it for them. The operators of the cluster can just
+focus on resource allocation and observe how the system performs. Everyone gets
+to focus on their stuff to the max.</p>
+<p>Lastly, and I love this the most, how it uses redundancy to deal with
+stragglers. <em>A straggler is a machine or process that takes an unsually long
+time to complete one of the last few tasks in the computation.</em> There can be so
+many reasons why stragglers occur, but instead of focusing on finding the
+rootcause for each of them, the Master assigns a backup job to other worker(s).
+If the backup finishes first, it doesn&rsquo;t have to care about the straggler
+anymore.  Redundancy may sound like a taboo for some people, but they were able
+to achieve 44% increase in terms of performance. It&rsquo;s like if you&rsquo;re slow, I&rsquo;m
+gonna send in Usain Bolt. That&rsquo;s just the right way to use money for not
+tolerating ineffiency. No need for a meeting. No need for kumbaya. No need for
+an alignment. Investigation can come much later.</p>
+<p>Think about it, the same approach can be used not just for computing, but how
+your organization can achieve its goals as well. Gregor Hohpe refers to this as
+The <strong>Economy of Speed</strong>. In that type of economy, there&rsquo;s no reason why there
+must be just one group responsible for a task. If they&rsquo;re in your way, you can
+find a Usain Bolt to get the value to the customer without waiting for the
+authoritative group to come back to you. IIRC, Mike Amundsen said in one of the
+podcast episodes that Amazon has many of the same things because of this no wait
+policy as well.</p>
+<p><img src="/images/straggler.jpg" alt="Stragglers"></p>
+<h1 id="epilogue">Epilogue</h1>
+<p>I hope by now I was able to convince you that problem solving has something to
+do with using brains and money the right way than just being recognized by other
+as a tech company. If you don&rsquo;t, then please at least don&rsquo;t discourage others
+who aspire to. Sometimes these tech companies you don&rsquo;t want to become resort to
+using a number of primitive approaches than you might think (like pingging and
+piggy backing). Yet, many still want to believe they couldn&rsquo;t do the same things.</p>
+<p>Finally, MapReduce is how Google solved this data processing problem <strong>back in
+2004</strong>. In 2014, they announced <a href="https://www.datacenterknowledge.com/archives/2014/06/25/google-dumps-mapreduce-favor-new-hyper-scale-analytics-system">they no longer use the
+technique</a>.
+The paper became a classic on solving a problem once believed impossible to be
+solved. And the news basically gave us a good reminder that if you&rsquo;re still
+struggling with the same problem they had in the past, the future doesn&rsquo;t really
+bode well for you (plus, they have a much better way of indexing your lives
+too).</p>
+
+</content>
+<p>
+  
+  <a href="https://nont.dev/blog/paper/">#paper</a>
+  
+  <a href="https://nont.dev/blog/distributed_systems/">#distributed_systems</a>
+  
+  <a href="https://nont.dev/blog/big_brain/">#big_brain</a>
+  
+</p>
+
+  </main>
+  <footer>
+</footer>
+
+    
+</body>
+
+</html>
