@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Nont.dev</title>
-    <link>https://nont.dev/</link>
-    <description>Recent content on Nont.dev</description>
+    <title>paper on Nont.dev</title>
+    <link>https://nont.dev/blog/paper/</link>
+    <description>Recent content in paper on Nont.dev</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-US</language>
     <copyright>Copyright © 2020-2021, Nont</copyright>
-    <lastBuildDate>Thu, 04 Feb 2021 22:37:05 -0600</lastBuildDate><atom:link href="https://nont.dev/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Thu, 04 Feb 2021 22:37:05 -0600</lastBuildDate><atom:link href="https://nont.dev/blog/paper/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Map Reduce, i.e. using money and brain the right way</title>
       <link>https://nont.dev/map-reduce-i.e.-using-money-and-brain-the-right-way/</link>
@@ -16,15 +16,6 @@
       <guid>https://nont.dev/map-reduce-i.e.-using-money-and-brain-the-right-way/</guid>
       <description>Have you been to a meeting where your key stakeholders, decision makers, or even your managers look at you like this?
 As a technical person, I have been to many of these, more than I had ever wanted to or wished for. It&amp;rsquo;s pretty much the reaction that me and my team would get when we try to push a new idea forward or even try something new. Adding that as a person coming from a third world country and being Asian, not getting a good scolding is already considered lucky (I did personally get those more than my two hands can count).</description>
-    </item>
-    
-    <item>
-      <title>In the Beginning...</title>
-      <link>https://nont.dev/in-the-beginning.../</link>
-      <pubDate>Mon, 01 Feb 2021 19:31:14 -0600</pubDate>
-      
-      <guid>https://nont.dev/in-the-beginning.../</guid>
-      <description>&amp;ldquo;In the beginning was the Word, and the Word was with God, and the Word was God. The same was in the beginning with God.&amp;rdquo;&amp;quot; — John 1: 1-14 KJV I was inspired to have a blog for a while now. But in the process I also wanted to personalize it by not being bound by a certain internet platform. I like the idea of freedom and have been tired of certain restraints, that&amp;rsquo;s why I chose to do it this way.</description>
     </item>
     
   </channel>
