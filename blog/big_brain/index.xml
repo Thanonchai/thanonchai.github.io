@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>big_brain on Nont.dev</title>
+    <title>big_brain on Nont</title>
     <link>https://nont.dev/blog/big_brain/</link>
-    <description>Recent content in big_brain on Nont.dev</description>
+    <description>Recent content in big_brain on Nont</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-US</language>
     <copyright>Copyright © 2020-2021, Nont</copyright>
