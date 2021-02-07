@@ -4,43 +4,48 @@
   
   <url>
     <loc>https://nont.dev/</loc>
-    <lastmod>2021-02-04T22:37:05-06:00</lastmod>
+    <lastmod>2021-02-06T23:06:42-06:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>https://nont.dev/blog/big_brain/</loc>
-    <lastmod>2021-02-04T22:37:05-06:00</lastmod>
+    <lastmod>2021-02-06T23:06:42-06:00</lastmod>
   </url>
   
   <url>
     <loc>https://nont.dev/blog/</loc>
-    <lastmod>2021-02-04T22:37:05-06:00</lastmod>
+    <lastmod>2021-02-06T23:06:42-06:00</lastmod>
   </url>
   
   <url>
     <loc>https://nont.dev/blog/distributed_systems/</loc>
-    <lastmod>2021-02-04T22:37:05-06:00</lastmod>
+    <lastmod>2021-02-06T23:06:42-06:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://nont.dev/blog/helloworld/</loc>
+    <lastmod>2021-02-06T23:06:42-06:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://nont.dev/blog/humanity/</loc>
+    <lastmod>2021-02-06T23:06:42-06:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://nont.dev/blog/paper/</loc>
+    <lastmod>2021-02-06T23:06:42-06:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://nont.dev/test/</loc>
+    <lastmod>2021-02-06T23:06:42-06:00</lastmod>
   </url>
   
   <url>
     <loc>https://nont.dev/mapreduce-i.e.-using-money-and-brain-the-right-way/</loc>
     <lastmod>2021-02-04T22:37:05-06:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://nont.dev/blog/paper/</loc>
-    <lastmod>2021-02-04T22:37:05-06:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://nont.dev/blog/helloworld/</loc>
-    <lastmod>2021-02-01T19:31:14-06:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://nont.dev/blog/humanity/</loc>
-    <lastmod>2021-02-01T19:31:14-06:00</lastmod>
   </url>
   
   <url>
