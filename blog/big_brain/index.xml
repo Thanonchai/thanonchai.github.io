@@ -7,17 +7,7 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-US</language>
     <copyright>Copyright © 2020-2021, Nont</copyright>
-    <lastBuildDate>Sat, 06 Feb 2021 23:06:42 -0600</lastBuildDate><atom:link href="https://nont.dev/blog/big_brain/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>Test</title>
-      <link>https://nont.dev/test/</link>
-      <pubDate>Sat, 06 Feb 2021 23:06:42 -0600</pubDate>
-      
-      <guid>https://nont.dev/test/</guid>
-      <description>This is a page about »Test«.
-     </description>
-    </item>
-    
+    <lastBuildDate>Thu, 04 Feb 2021 22:37:05 -0600</lastBuildDate><atom:link href="https://nont.dev/blog/big_brain/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>MapReduce, i.e. using money and brain the right way</title>
       <link>https://nont.dev/mapreduce-i.e.-using-money-and-brain-the-right-way/</link>
